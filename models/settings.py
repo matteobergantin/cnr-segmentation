@@ -65,5 +65,3 @@ class ProjectSettings(BaseModel):
     def save_to_file(self, file_path: str):
         with open(file_path, 'w') as f:
             f.write(self.model_dump_json(indent=2))
-
-ProjectSettings().save_to_file('settings.json')
