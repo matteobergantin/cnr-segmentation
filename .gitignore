@@ -208,7 +208,7 @@ __marimo__/
 
 
 # Dataset
-./dataset/
+dataset/
 
 # Output dir
-./output/
+output/
