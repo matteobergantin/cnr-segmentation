@@ -213,5 +213,5 @@ dataset/
 # Output dir
 output/
 
-# Final Model Weights
-trained_weights.pth
+# Input images
+input_data/

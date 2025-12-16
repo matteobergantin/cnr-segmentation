@@ -6,6 +6,8 @@ import os
 class ProjectSettings(BaseModel):
     RUN_MODE: typing.Literal["train", "test"] = "test"
     EVALUATE_MODEL: bool = True
+    GENERATE_MASKS: bool = True
+    INPUT_IMAGES_DIR: str = "input_images"
     DEVICE: typing.Literal["cuda", "cpu"] = 'cpu'
     DATASET_PATH: str = "dataset"
     OUTPUT_DIR: str = "output"
@@ -16,6 +18,11 @@ class ProjectSettings(BaseModel):
     @property
     def MASKS_DIR_NAME(self) -> str:
         return os.path.join(self.OUTPUT_DIR, "masks")
+    
+    @computed_field
+    @property
+    def OUTPUT_IMAGES_DIR(self) -> str:
+        return os.path.join(self.OUTPUT_DIR, 'generated_images')
 
     DEEPLAB_MODEL_NAME: str = "deeplabv3_resnet50"
     DEEPLAB_PRETRAINED_WEIGHTS: str = "DEFAULT"
@@ -40,6 +47,8 @@ class ProjectSettings(BaseModel):
         
         os.makedirs(self.OUTPUT_DIR, exist_ok=True)
         os.makedirs(self.MASKS_DIR_NAME, exist_ok=True)
+        os.makedirs(self.INPUT_IMAGES_DIR, exist_ok=True)
+        os.makedirs(self.OUTPUT_IMAGES_DIR, exist_ok=True)
         return self
 
     IMAGE_SIZE: int = 512

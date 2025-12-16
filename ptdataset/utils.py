@@ -2,6 +2,7 @@ from models.dataset import DatasetLabelMeModel
 from torch.utils.data import Dataset
 from sklearn.metrics import f1_score
 from torchvision import transforms
+from . import LABEL_TO_ID
 from .settings import settings
 import numpy as np
 import torch
@@ -24,7 +25,7 @@ def create_mask_from_dataset(data: DatasetLabelMeModel):
 
     for shape in data.shapes:
         pts = np.array([list(p) for p in shape.points], dtype=np.int32)
-        cv2.fillPoly(mask, [pts], shape.label_id)
+        cv2.fillPoly(mask, [pts], LABEL_TO_ID[shape.label])
 
     return mask
 

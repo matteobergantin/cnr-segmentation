@@ -1,12 +1,14 @@
 {
   "RUN_MODE": "test",
   "EVALUATE_MODEL": true,
+  "GENERATE_MASKS": true,
+  "INPUT_IMAGES_DIR": "input_data",
   "DEVICE": "cpu",
   "DATASET_PATH": "dataset",
   "OUTPUT_DIR": "output",
   "DEEPLAB_MODEL_NAME": "deeplabv3_resnet50",
   "DEEPLAB_PRETRAINED_WEIGHTS": "DEFAULT",
-  "TRAINED_MODEL_FILENAME": "trained_weights.pth",
+  "TRAINED_MODEL_FILENAME": "weights.pth",
   "BATCH_SIZE": 2,
   "EPOCHS": 30,
   "LEARNING_RATE": 0.0001,
@@ -19,6 +21,5 @@
     1.5,
     3.0
   ],
-  "IMAGE_SIZE": 512,
-  "MASKS_DIR_NAME": "output\\masks"
+  "IMAGE_SIZE": 512
 }
